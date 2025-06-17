@@ -1,43 +1,17 @@
+import bankaccount
+import savingsaccount
+import checkingaccount
 
-# Class initialization
-class BankAccount:
-    # Class Attribute
-    title = "Bank of America"
-    # Initialization function takes customer name, current balance, and minimum balance
-    def __init__(self, customer_name: str, current_balance: float, minimum_balance: float):
-        self.customer_name = customer_name
-        self.current_balance = current_balance
-        self.minimum_balance = minimum_balance
-
-class SavingsAccount(BankAccount):
-    # Subclass title
-    account_title = "Savings Account"
-    # Sent its initialization up to parent class
-    def __init__(self, customer_name: str, current_balance: float, minimum_balance: float):
-        super().__init__(customer_name, current_balance, minimum_balance)
-    # Include variable for interest rate
-    interest_rate = 0.01
-
-
-class CheckingAccount(BankAccount):
-    # Subclass title
-    account_title = "Checking Account"
-
-    # Sent its initialization up to parent class
-    def __init__(self, customer_name: str, current_balance: float, minimum_balance: float):
-        super().__init__(customer_name, current_balance, minimum_balance)
-    # Include variable for transfer limit
-    transfer_limit = 1000
 
 # Deposit Function takes BankAccount object and deposit value
-def deposit(account: BankAccount, deposit_val: float):
+def deposit(account: bankaccount.BankAccount, deposit_val: float):
     # Deposits amount into BankAccount object, then provides confirmation message
     account.current_balance += deposit_val
     print(f"\nFor the Customer: {account.customer_name}, ")
     print("Deposit Complete.")
 
 # Withdraw Function takes BankAccount object and withdraw value
-def withdraw(account: BankAccount, withdraw_val: float):
+def withdraw(account: bankaccount.BankAccount, withdraw_val: float):
     # If withdrawing would fall below minimum value, cancel withdraw and provide cancel message
     if (account.current_balance - withdraw_val) < account.minimum_balance:
         print(f"\nFor the Customer: {account.customer_name}, ")
@@ -54,23 +28,23 @@ def print_customer_information(account):
     print(f"\nBank: {account.title}\nCustomer: {account.customer_name}"
           f"\n{account.account_title}: ${account.current_balance}\nMinimum Balance: ${account.minimum_balance}")
 
-def print_customer_savings(account: SavingsAccount):
+def print_customer_savings(account: savingsaccount.SavingsAccount):
     print(f"\nCustomer: {account.customer_name}"
           f"\n{account.account_title} Balance: ${account.current_balance}\nMinimum Balance: ${account.minimum_balance}"
           f"\nCurrent Interest Rate: {account.interest_rate}")
 
-def print_customer_checking(account: CheckingAccount):
+def print_customer_checking(account: checkingaccount.CheckingAccount):
     print(f"\nCustomer: {account.customer_name}"
           f"\n{account.account_title} Balance: ${account.current_balance}\nMinimum Balance: ${account.minimum_balance}"
           f"\nTransfer Limit: ${account.transfer_limit}")
 # Validation Below
 
 # Create two instances of the BankAccount class
-customer_one_checking = CheckingAccount("Ivan Ivanov", 350.77, 200.00)
-customer_two_checking = CheckingAccount("Greg Gregoriv", 350.00, 200.00)
+customer_one_checking = checkingaccount.CheckingAccount("Ivan Ivanov", 350.77, 200.00)
+customer_two_checking = checkingaccount.CheckingAccount("Greg Gregoriv", 350.00, 200.00)
 
-customer_one_savings = SavingsAccount("Ivan Ivanov", 1000, 0)
-customer_two_savings = SavingsAccount("Greg Gregoriv", 1000, 0)
+customer_one_savings = savingsaccount.SavingsAccount("Ivan Ivanov", 1000, 0)
+customer_two_savings = savingsaccount.SavingsAccount("Greg Gregoriv", 1000, 0)
 
 # Print information from both instances using custom def
 print_customer_information(customer_one_checking)
