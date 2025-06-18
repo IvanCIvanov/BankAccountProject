@@ -9,3 +9,13 @@ class CheckingAccount(BankAccount):
         super().__init__(customer_name, current_balance, minimum_balance)
     # Include variable for transfer limit
     transfer_limit = 1000
+
+    def transfer(self, recipient_account, amount):
+        if amount > self.transfer_limit:
+            print(f"Transfer failed: Amount exceeds limit of {self.transfer_limit}")
+        elif amount > self.current_balance:
+            print(f"Transfer failed: Insufficient balance of {self.current_balance}")
+        else:
+            self.current_balance -= amount
+            recipient_account.current_balance += amount
+            print(f"Transferred ${amount} from {self.customer_name} to {recipient_account.customer_name}")
