@@ -8,3 +8,8 @@ class SavingsAccount(BankAccount):
         super().__init__(customer_name, current_balance, minimum_balance)
     # Include variable for interest rate
     interest_rate = 0.01
+
+    def apply_interest(self):
+        interest_amount = self.current_balance * self.interest_rate
+        self.current_balance += interest_amount
+        print(f"Interest of ${interest_amount:.2f} added. New balance: ${self.current_balance:.2f}")

@@ -41,10 +41,10 @@ def print_customer_checking(account: checkingaccount.CheckingAccount):
 
 # Create two instances of the BankAccount class
 customer_one_checking = checkingaccount.CheckingAccount("Ivan Ivanov", 350.77, 200.00)
-customer_two_checking = checkingaccount.CheckingAccount("Greg Gregoriv", 350.00, 200.00)
+customer_two_checking = checkingaccount.CheckingAccount("Grishma Howale", 350.00, 200.00)
 
 customer_one_savings = savingsaccount.SavingsAccount("Ivan Ivanov", 1000, 0)
-customer_two_savings = savingsaccount.SavingsAccount("Greg Gregoriv", 1000, 0)
+customer_two_savings = savingsaccount.SavingsAccount("Grishma Howale", 1000, 0)
 
 # Print information from both instances using custom def
 print_customer_information(customer_one_checking)
@@ -67,5 +67,16 @@ print_customer_savings(customer_one_savings)
 print_customer_savings(customer_two_savings)
 
 print("\nDisplay Checking Accounts: ")
+print_customer_checking(customer_one_checking)
+print_customer_checking(customer_two_checking)
+
+
+#Call new methods
+print("\nInterest Applying")
+customer_one_savings.apply_interest()
+print_customer_savings(customer_one_savings)
+
+print("\nTransferring money")
+customer_one_checking.transfer(customer_two_checking, 600)
 print_customer_checking(customer_one_checking)
 print_customer_checking(customer_two_checking)
