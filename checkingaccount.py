@@ -17,5 +17,7 @@ class CheckingAccount(BankAccount):
             print(f"Transfer failed: Insufficient balance of {self.current_balance}")
         else:
             self.current_balance -= amount
+            self.current_balance = round(self.current_balance, 2)
             recipient_account.current_balance += amount
+            recipient_account.current_balance = round(recipient_account.current_balance, 2)
             print(f"Transferred ${amount} from {self.customer_name} to {recipient_account.customer_name}")
