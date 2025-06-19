@@ -80,3 +80,13 @@ print("\nTransferring money")
 customer_one_checking.transfer(customer_two_checking, 600)
 print_customer_checking(customer_one_checking)
 print_customer_checking(customer_two_checking)
+
+
+# Routing Number is protected and should not be accessed in general.
+# This display is only to provide proof of functionality,
+# and would not be in a standard use case.
+print(f"\nCustomer One Account Number: {customer_one_checking.account_number()}")
+print(f"Customer One Routing Number: {customer_one_checking._routing_number}\n")
+
+print(f"Customer Two Account Number: {customer_two_checking.account_number()}")
+print(f"Customer Two Routing Number: {customer_two_checking._routing_number}")
