@@ -39,28 +39,15 @@ def print_customer_checking(account: checkingaccount.CheckingAccount):
           f"\nTransfer Limit: ${account.transfer_limit}")
 # Validation Below
 
-# Create two instances of the BankAccount class
+# Create two instances of Checking Account
 customer_one_checking = checkingaccount.CheckingAccount("Ivan Ivanov", 350.77, 200.00)
 customer_two_checking = checkingaccount.CheckingAccount("Grishma Howale", 350.00, 200.00)
 
+# Create two instances of Savings Account
 customer_one_savings = savingsaccount.SavingsAccount("Ivan Ivanov", 1000, 0)
 customer_two_savings = savingsaccount.SavingsAccount("Grishma Howale", 1000, 0)
 
-# Print information from both instances using custom def
-print_customer_information(customer_one_checking)
-print_customer_information(customer_two_checking)
-
-# Deposit $100 into Ivan's account, then display updated account
-deposit(customer_one_checking, 100)
-print_customer_information(customer_one_checking)
-
-# Withdraw $100 from Greg's account
-withdraw(customer_two_checking, 100)
-# Prove that Withdraw limit exists with minimum balance.
-withdraw(customer_two_checking, 100)
-# Display updated account with only $100 withdrawn
-print_customer_information(customer_two_checking)
-
+print("\n******** Two Instances of Checking Account and Savings Account ********")
 
 print("\nDisplay Savings Accounts: ")
 print_customer_savings(customer_one_savings)
@@ -72,19 +59,31 @@ print_customer_checking(customer_two_checking)
 
 
 #Call new methods
-print("\nInterest Applying")
+print("\n******** Begin Scenario ********")
+print("\n******** Applying Interest & Transferring Money ********")
+print("\nApplying Interest to customer one Savings...")
+print("\nPrevious Amount: $" + str(customer_one_savings.current_balance))
 customer_one_savings.apply_interest()
+print("\nUpdated Account Balance: ")
 print_customer_savings(customer_one_savings)
 
-print("\nTransferring money")
+print("\nAttempting Transfer of money")
 customer_one_checking.transfer(customer_two_checking, 600)
+print("\nCurrent Accounts status post-failure: ")
 print_customer_checking(customer_one_checking)
 print_customer_checking(customer_two_checking)
 
+print("\nAttempting Valid Transfer of money")
+customer_one_checking.transfer(customer_two_checking, 200)
+print("\nCurrent Accounts status post-success: ")
+print_customer_checking(customer_one_checking)
+print_customer_checking(customer_two_checking)
 
 # Routing Number is protected and should not be accessed in general.
 # This display is only to provide proof of functionality,
 # and would not be in a standard use case.
+print("\n******** Private Accounting Number ********")
+print("\n******** Protected Routing Number  ********")
 print(f"\nCustomer One Account Number: {customer_one_checking.account_number()}")
 print(f"Customer One Routing Number: {customer_one_checking._routing_number}\n")
 
